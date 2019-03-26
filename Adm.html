@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+	<link rel="stylesheet" type="text/css" href="adm.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<meta charset="utf-8">
+	<title>Gestión Montmeló</title>
+</head>
+<body style="background-color: grey">
+	
+	<div id="Titulo">
+		<h2 >ECO RACING
+		<img id="logo" src="logoMontmelo.jpg"></h2>
+	</div>
+	<div class="Buttons">
+		<button class="btn btn-warning" name="envases">Envases</button>
+		<button class="btn btn-info" name="papelcarton">Papel y Cartón</button>
+		<button class="btn btn-success" name="vidrio">Vidrio</button>
+		<img src="">
+		<div id="envases">
+		</div>
+		<div id="papelcarton">
+		</div>
+		<div id="vidrio">
+		</div>
+	</div>
+</body>
+<script>
+	var countEnvases, countPapelCarton, countVidrio;
+	function contadorEnvases()
+	{
+		var count = countEnvases++;
+	}
+	function contadorPapelCarton()
+	{
+		countPapelCarton++;
+	}
+	function contadorVidrio()
+	{
+		countVidrio++;
+	}
+	$(document).ready(function(){
+            $("button[name='envases']").on("click", contadorEnvases);
+            $("button[name='papelcarton']").on("click", contadorPapelCarton);
+            $("button[name='vidrio']").on("click", contadorVidrio);
+    });
+</script>
+</html>

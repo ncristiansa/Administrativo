@@ -1,0 +1,20 @@
+#Titulo{
+	position: relative;
+    text-align: center;
+  	border: 2px solid black;
+  	margin: 1px auto;
+  	width: 700px;
+  	background-color: white;
+
+}
+#logo{
+	position:relative;
+	right: 15px;
+	margin: 6px;
+	width: 300px
+}
+
+.Buttons{
+	text-align: center;
+	margin: 5px;
+}
