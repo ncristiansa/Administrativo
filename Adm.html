@@ -7,13 +7,13 @@
     <meta charset="utf-8">
     <title>Gestión Montmeló</title>
 </head>
+
 <body style="background-color: grey">
    
     <div id="Titulo">
         <h2 >ECO RACING
         <img id="logo" src="logoMontmelo.jpg"></h2>
-    </div>
-
+	</div>
 </body>
 	
     <script>
@@ -49,13 +49,15 @@
 
 	function panelControl()
 	{
-		var divContenedor = $("<div>").attr({'id':'panelcontrol', 'style':'width:500px;padding:15px;margin:10px;background-color:white;margin-left:100px;'});
+		var divContenedor = $("<div>").attr({'id':'panelcontrol', 'style':'background-color:white;', 'class':'contenedor-control'});
+		var div = $("<div>");
 		var label = $("<label>", {text:'Codigo:'});
 		var inputText = $("<input>").attr({'type':'text', 'name':'codigo'});
-		var inputComprobar = $("<input>").attr({'type':'submit', 'name':'comprobar', 'value':'Comprobar'});
-		divContenedor.append(label);
-		divContenedor.append(inputText);
-		divContenedor.append(inputComprobar);
+		var inputComprobar = $("<input>").attr({'name':'comprobar','class':'btn btn-success', 'value':'Comprobar','style':'width:100px;'});
+		div.append(label);
+		div.append(inputText);
+		div.append(inputComprobar);
+		divContenedor.append(div);
 		$("#Titulo").after(divContenedor);
 		$("input[name='comprobar']").on("click", comprobar);
 
@@ -65,9 +67,11 @@
 		var textoInput = $("input[name='codigo']").val();
 		if(textoInput == "JKWP394KDI193L")
 		{
-			
+			$("#panelcontrol").hide();
 			tipoYContadores();
-			
+		}else
+		{
+			alert("codigo incorrecto");
 		}
 	}
     var countEnvases = 0;
