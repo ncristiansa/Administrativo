@@ -18,3 +18,24 @@
 	text-align: center;
 	margin: 5px;
 }
+.contenedor {
+	/* IMPORTANTE */
+		text-align: center;
+		justify-content: center;
+		margin-left:5px;
+	}
+
+	.bloque-contador {
+		padding: 15px;
+		margin: 2px;
+		background-color:azure;
+		/* IMPORTANTE */
+		display: inline-block;
+	}
+	p {
+		font-size: 30px;
+		font-weight: normal;
+		margin-top: 10px;
+		margin-bottom: 0;
+		text-align: center;
+	}

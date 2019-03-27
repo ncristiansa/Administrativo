@@ -1,51 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-	<link rel="stylesheet" type="text/css" href="adm.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="adm.css">
 	<script src="jquery-3.3.1.min.js"></script>
-	<meta charset="utf-8">
-	<title>Gestión Montmeló</title>
+    <meta charset="utf-8">
+    <title>Gestión Montmeló</title>
 </head>
 <body style="background-color: grey">
-	
-	<div id="Titulo">
-		<h2 >ECO RACING
-		<img id="logo" src="logoMontmelo.jpg"></h2>
-	</div>
-	<div class="Buttons">
-		<button class="btn btn-warning" name="envases">Envases</button>
-		<button class="btn btn-info" name="papelcarton">Papel y Cartón</button>
-		<button class="btn btn-success" name="vidrio">Vidrio</button>
-		<img src="">
-		<div id="envases">
-		</div>
-		<div id="papelcarton">
-		</div>
-		<div id="vidrio">
-		</div>
-	</div>
+   
+    <div id="Titulo">
+        <h2 >ECO RACING
+        <img id="logo" src="logoMontmelo.jpg"></h2>
+    </div>
+
 </body>
-<script>
-	var countEnvases, countPapelCarton, countVidrio;
-	function contadorEnvases()
+	
+    <script>
+	function tipoYContadores()
 	{
-		var count = countEnvases++;
+		var divGeneral = $("<div>");
+		var divBotones = $("<div>").attr({'class':'Buttons'});
+		var botonEnvase = $("<button>").attr({'class':'btn btn-warning', 'name':'envases'}).text("Envases");
+		var botonPapelCarton = $("<button>").attr({'class':'btn btn-info', 'name':'papelcarton'}).text("Papel y Cartón");
+		var botonVidrio = $("<button>").attr({'class':'btn btn-success', 'name':'vidrio'}).text("Vidrio");
+		divBotones.append(botonEnvase);
+		divBotones.append(botonPapelCarton);
+		divBotones.append(botonVidrio);
+		
+		var divContenedor = $("<div>").attr({'class':'contenedor'});
+		var divEnvase = $("<div>").attr({'id':'envases', 'class':'bloque-contador', 'style':'width:80px'});
+		divEnvase.append($("<p>",{text:"0"}).attr({'id':'contador-envases'}));
+		var divPapelCartol = $("<div>").attr({'id':'papelcarton', 'class':'bloque-contador', 'style':'width:128px'});
+		divPapelCartol.append($("<p>",{text:"0"}).attr({'id':'contador-papelcarton'}));
+		var divVidrio = $("<div>").attr({'id':'vidrio', 'class':'bloque-contador', 'style':'width:70px'});
+		divVidrio.append($("<p>",{text:"0"}).attr({'id':'contador-vidrio'}));
+
+		divGeneral.append(divBotones);
+		divContenedor.append(divEnvase);
+		divContenedor.append(divPapelCartol);
+		divContenedor.append(divVidrio);
+		divGeneral.append(divContenedor);
+		$("#Titulo").after(divGeneral);
+		$("button[name='envases']").on("click", contadorEnvases);
+        $("button[name='papelcarton']").on("click", contadorPapelCarton);
+        $("button[name='vidrio']").on("click", contadorVidrio);
 	}
-	function contadorPapelCarton()
+
+	function panelControl()
 	{
-		countPapelCarton++;
+		var divContenedor = $("<div>").attr({'id':'panelcontrol', 'style':'width:500px;padding:15px;margin:10px;background-color:white;margin-left:100px;'});
+		var label = $("<label>", {text:'Codigo:'});
+		var inputText = $("<input>").attr({'type':'text', 'name':'codigo'});
+		var inputComprobar = $("<input>").attr({'type':'submit', 'name':'comprobar', 'value':'Comprobar'});
+		divContenedor.append(label);
+		divContenedor.append(inputText);
+		divContenedor.append(inputComprobar);
+		$("#Titulo").after(divContenedor);
+		$("input[name='comprobar']").on("click", comprobar);
+
 	}
-	function contadorVidrio()
+	function comprobar()
 	{
-		countVidrio++;
+		var textoInput = $("input[name='codigo']").val();
+		if(textoInput == "JKWP394KDI193L")
+		{
+			
+			tipoYContadores();
+			
+		}
 	}
-	$(document).ready(function(){
-            $("button[name='envases']").on("click", contadorEnvases);
-            $("button[name='papelcarton']").on("click", contadorPapelCarton);
-            $("button[name='vidrio']").on("click", contadorVidrio);
+    var countEnvases = 0;
+    var countPapelCarton = 0;
+    var countVidrio = 0;
+    function contadorEnvases()
+    {
+        countEnvases++;
+        $("#contador-envases").text(countEnvases.toString());
+
+    }
+    function contadorPapelCarton()
+    {
+        countPapelCarton = countPapelCarton+2;
+        $("#contador-papelcarton").text(countPapelCarton.toString());
+    }
+    function contadorVidrio()
+    {
+        countVidrio =countVidrio+3;
+        $("#contador-vidrio").text(countVidrio.toString());
+    }
+    $(document).ready(function(){
+		
+        panelControl();
+		//tipoYContadores();
     });
 </script>
 </html>
